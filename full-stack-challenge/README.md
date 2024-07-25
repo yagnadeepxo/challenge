@@ -1,5 +1,7 @@
 ## Wysdom Full-Stack Challenge - DeFi Dashboard
 
+Clone this repo to get started!
+
 ### Objective
 
 Build a DeFi dashboard using TypeScript, Next.js with the app router, Express, Prisma, and React Query, integrating Web3 wallet connectivity.
