@@ -1,7 +1,20 @@
-## Full-Stack DeFi Dashboard Challenge
+## Wydsdom Full-Stack Challenge - DeFi Dashboard
 
 ### Objective
-Build a DeFi dashboard using TypeScript, Next.js with the app router, Express, and React Query, integrating Web3 wallet connectivity.
+
+Build a DeFi dashboard using TypeScript, Next.js with the app router, Express, Prisma, and React Query, integrating Web3 wallet connectivity.
+
+#### Tech Stack
+
+- Client: Next.js
+- Server: Express.js, REST
+- UI: Tailwind and ShadCN
+- DB: Prisma, PostgreSQL
+- Blockchain: web3.js / ethers / wagmi (or any equivalent)
+
+### Data
+
+- `tokens.json` contains a few example tokens you can use within the challenge
 
 ### Demo
 
@@ -9,7 +22,7 @@ Build a DeFi dashboard using TypeScript, Next.js with the app router, Express, a
 
 This will be the home page `/` route, and you will need to take the `token.json` data, or any token data of your choosing, and display the tokens in a list and using the appropriate APIs to fetch the missing data (i.e. price data)
 
-![Explore Page]("/images/explore-page.png")
+![Explore Page](https://github.com/Wysdom-xyz/engineering-challenges/blob/main/full-stack-challenge/images/explore-page.png?raw=true)
 
 ##### Token Detail Page
 
@@ -21,7 +34,7 @@ The chart will have toggeable filters for the timeframe (1 year, 1 month, 1 week
 
 Additionally, render out the key statistics of the returns of the day, month, year etc.
 
-![Token Detail Page]("/images/token-detail-page.png")
+![Token Detail Page](https://github.com/Wysdom-xyz/engineering-challenges/blob/main/full-stack-challenge/images/token-detail-page.png?raw=true)
 
 ##### Account Page
 
@@ -41,30 +54,42 @@ Show also the NFTs the user holds.
 
 Show the transaction history associated with the account
 
-![Account Page - Tokens]("/images/acount-page.png")
-![Account Page - NFTs]("/images/acount-page-1.png")
-![Account Page - History]("/images/acount-page-2.png")
+![Account Page - Tokens](https://github.com/Wysdom-xyz/engineering-challenges/blob/main/full-stack-challenge/images/account-page.png?raw=true)
+![Account Page - NFTs](https://github.com/Wysdom-xyz/engineering-challenges/blob/main/full-stack-challenge/images/account-page-1.png?raw=true)
+![Account Page - History](https://github.com/Wysdom-xyz/engineering-challenges/blob/main/full-stack-challenge/images/account-page-2.png?raw=true)
 
+#### Log List Page
+
+Display a list of all api calls saved in the Logger db model.
+
+A simple table will suffice.
 
 ### Requirements
 
 #### Frontend (Next.js)
 1. **Pages:**
-   - **Dashboard Page:**
+   - **Explore Page:**
      - Display current prices and detailed information for major tokens (e.g., BTC, ETH, BNB).
      - Include a button to login with a Web3 wallet connector of your choice.
      - **Token Detail Page:**
        - Display detailed information for a selected token including a graph of the historical price.
        - Include buttons to filter the historical price graph by time frames (e.g., 1D, 7D, 1M, 1Y).
        - Show additional information such as name, description, social media links, website, and logo.
-   - **Portfolio Page:**
+   - **Account Page:**
      - Display the connected wallet's portfolio value, balance, token holdings, and transaction history.
+   - **Log List Page:**
+     - Display the logs present in the Logger db model.
 2. **Components:**
-   - **TokenPrices:** Display token prices.
-   - **TokenInfo:** Display detailed token information.
-   - **WalletConnector:** Button to connect a Web3 wallet.
-   - **Portfolio:** Display the user's portfolio details including holdings and transaction history.
-   - **TokenDetail:** Display detailed token information including the historical price graph and filters.
+    - **TokenList**: Display a list of tokens with current prices.
+    - **TokenDetail**: Display detailed token information, historical price graph, and filters.
+    - **TokenStats**: Show additional token information like description, social media links, and website.
+WalletConnector: Button to connect a Web3 wallet.
+    - **Portfolio**: Display the user's portfolio details including holdings and transaction history.
+    - **PortfolioAssets**: Display the user's token holdings, balance, and value.
+    - **PortfolioNFTs**: Show the NFTs the user holds.
+    - **PortfolioTransactions**: Show the transaction history associated with the account.
+    - **TimeframeFilters**: Buttons to filter the historical price graph by timeframes.
+    - **Logs**: A simple table that displays the logs
 3. **Custom Hooks:**
    - **useTokenPrices:** Fetch token prices.
    - **useTokenInfo:** Fetch detailed token information.
@@ -73,17 +98,52 @@ Show the transaction history associated with the account
    - **useTokenHoldings:** Fetch specific token holdings in the user's portfolio.
    - **useTransactionHistory:** Fetch the transaction history for the wallet address.
    - **useTokenHistory:** Fetch historical price data for a specific token.
+   - **useCreateAPILog**: Hook to create API logs for recording API calls.
+    - **useAPILogs** : Hook to fetch and display API logs for monitoring purposes.
 4. **Data Fetching:**
-   - Use React Query for data fetching from the backend.
+   - Use React Query for data fetching from the backend, using custom hooks. 
+   - Log all API calls to the database within the onSuccess callback for each api call
+
+- Sample custom hook
+```typescript
+"use client";
+
+import { useQuery } from "react-query";
+import { apiClient } from "./api-client";
+
+export const useItems = () => {
+  const query = useQuery("items", async () => {
+    const endpoint = '/items/';
+    const method = 'GET';
+
+    const response = await apiClient.get(endpoint);
+    return response.data.data;
+  }, {
+    onSuccess: () => {
+     // LOG HERE
+    }
+  });
+
+  return {
+    items: query.data,
+    isLoading: query.isLoading,
+    isFetching: query.isFetching
+  };
+};
+```
 
 #### Backend (Express)
 1. **API Endpoints:**
-   - **GET /api/defi/prices:** Fetch current prices for specified tokens.
-   - **GET /api/defi/info:** Fetch detailed information for specified tokens.
-   - **GET /api/defi/history:** Fetch historical price data for specified tokens.
-   - **GET /api/portfolio/:address:** Fetch portfolio balance and holdings for a given wallet address.
-   - **GET /api/portfolio/:address/holdings:** Fetch specific token holdings.
-   - **GET /api/transactions/:address:** Fetch transaction history for a given wallet address.
+   - **GET /api/defi/prices** - Fetch current prices for specified tokens.
+   - **GET /api/defi/:token/info** - Fetch detailed information for specified tokens.
+   - **GET /api/defi/:token/history:** - Fetch historical price data for specified tokens.
+   - **GET /api/defi/:token/stats/:timeFrame** -  Fetch the return stats for te specified timefram (1m/1y/1w)
+   - **GET /api/portfolio/:address** - Fetch portfolio balance and holdings for a given wallet address.
+   - **GET /api/portfolio/:address/holdings** - Fetch specific token holdings.
+   - **GET /api/portfolio/:address/nfts** - Fetch nfts for a given wallet address.
+   - **GET /api/portfolio/:address/transactions** - Fetch transaction history for a given wallet address.
+   - **GET /api/logger/** - Fetch all the logs.
+   - **POST /api/logger/** - Create a new log entry in the db.
 2. **Architecture:**
    - Use the router-controller-service pattern, grouped by resource.
    - Structure should look like this:
@@ -105,9 +165,14 @@ Show the transaction history associated with the account
      └── package.json
      ```
 3. **Blockchain Interaction:**
-   - Use web3.js or ethers.js to interact with the blockchain and fetch real-time data.
-4. **No Database:**
-   - Fetch all data directly from external APIs and the blockchain.
+   - Use web3.js or ethers.js or wagmi to interact with the blockchain and fetch real-time data.
+4. **Database:**
+Use Prisma to log all API calls to a database in a non-blocking way.
+Define the Prisma schema for logging API calls:
+
+- Logger Model must contain the endpoint used, the timestamp (createdAt) and the method ("GET", "POST", etc.)
+- The logger MUST BE CALLED IN THE CLIENT, NOT IN THE SERVER (as illustrated in the data fetching portion)
+   
 
 ### Instructions
 1. **Setup:**
@@ -121,8 +186,10 @@ Show the transaction history associated with the account
    - Create the necessary API endpoints.
    - Implement services to fetch data from external APIs (e.g., CoinGecko) and blockchain.
    - Use the router-controller-service pattern, grouped by resource.
-4. **Deployment:**
-   - Provide deployment instructions (e.g., Docker, Vercel for frontend, Heroku for backend).
+4. **Database:**
+   - Implement a logger model that records every api call done througout the web app.
+5. **Deployment:**
+   - Provide working deployed link (Vercel for frontend, vercel for backend and any free service for db).
 
 ### Evaluation Criteria
 1. **Functionality:** Completeness and correctness of the dashboard and portfolio features.
