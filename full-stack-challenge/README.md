@@ -157,7 +157,8 @@ Logger Hooks:
       - Implement proper cache invalidation for each hook
    - Log all API calls to the database within the onSuccess or onSettled callback for each api call
 
-- Sample custom hook
+- Sample custom hook example
+  
 ```typescript
 "use client";
 
@@ -172,7 +173,7 @@ export const useItems = () => {
     const response = await apiClient.get(endpoint);
     return response.data.data;
   }, {
-    onSuccess: () => {
+    onSettled: () => {
      // LOG HERE
     }
   });
