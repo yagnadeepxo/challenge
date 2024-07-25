@@ -178,7 +178,7 @@ Define the Prisma schema for logging API calls:
 ### Instructions
 1. **Setup:**
    - **Client:** Initialize a Next.js project with the app router.
-   - **Server:** Set up an Express server with TypeScript.
+   - **Server:** Set up an Express server with TypeScript. (Use Nodemon for `npm run dev`)
 2. **Frontend Implementation:**
    - Create the required pages and components.
    - Implement custom hooks for data fetching.
