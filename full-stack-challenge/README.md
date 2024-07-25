@@ -217,8 +217,14 @@ Server-Side State Management
    - **POST /api/logger/** - Create a new log entry in the db.
 
 2. **Architecture:**
-   - Use the router-controller-service pattern, grouped by resource.
-   - Structure should look like this:
+Use the router-controller-service pattern, grouped by resource:
+
+   - Router: is where you define all of your endpoints
+   - Controller: is where your Request and Response live
+   - Service: is where you interact with the data, either through a db or through APIs
+     
+   The structure should look like this:
+   
      ```plaintext
      server
      ├── src
@@ -237,11 +243,11 @@ Server-Side State Management
      ├── tsconfig.json
      └── package.json
      ```
-3. **Blockchain Interaction:**
+4. **Blockchain Interaction:**
 
    - Use web3.js or ethers.js or wagmi to interact with the blockchain and fetch real-time data.
 
-4. **Database:**
+5. **Database:**
 
 4.1 Create a Token model with the structure defined in `public/data/tokens.json` and use the json as the initial data for the model (seed the db using Prisma)
 
