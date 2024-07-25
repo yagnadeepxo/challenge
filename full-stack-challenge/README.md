@@ -148,7 +148,8 @@ Logger Hooks:
 
 4. **Data Fetching:**
    - Use React Query for data fetching from the backend, using custom hooks.
-      - useQuery and useMutation ONLY => DO NOT USE useEffect  
+      - useQuery and useMutation ONLY => DO NOT USE useEffect
+      - Implement proper cache invalidation for each hook
    - Log all API calls to the database within the onSuccess or onSettled callback for each api call
 
 - Sample custom hook
