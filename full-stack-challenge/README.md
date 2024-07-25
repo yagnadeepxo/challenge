@@ -18,6 +18,7 @@ Build a DeFi dashboard using TypeScript, Next.js with the app router, Express, P
 
 - `tokens.json` contains a few example tokens you can use within the challenge. These will be the initial data for your db, and needs to be seeded `npx prisma db seed`
 - RPC URL / token price, token data, NFTs, transaction history etc. (any external APIs of your choice)
+- Chain: any 1 chain of your choice
 
 ### Demo
 
@@ -84,8 +85,6 @@ Display a list of all api calls saved in the Logger db model.
 A simple table will suffice.
 
 ![Logs Page](https://github.com/Wysdom-xyz/engineering-challenges/blob/main/full-stack-challenge/public/images/logs-page.png?raw=true)
-
-#### Log List Page
 
 ### Requirements
 
