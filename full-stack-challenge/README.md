@@ -26,7 +26,7 @@ Build a DeFi dashboard using TypeScript, Next.js with the app router, Express, P
 
 #### Explore Page
 
-This will be the home page `/` route, and you will need to take the `token.json` data, or any token data of your choosing, and display the tokens in a list and using the appropriate APIs to fetch the missing data (i.e. price data)
+This will be the home page `/` route, and you will need to take the `tokens.json` data, or any token data of your choosing, and display the tokens in a list and using the appropriate APIs to fetch the missing data (i.e. price data)
 
 ##### => CRUD FUNCTIONALITY
 
