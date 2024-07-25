@@ -3,6 +3,49 @@
 ### Objective
 Build a DeFi dashboard using TypeScript, Next.js with the app router, Express, and React Query, integrating Web3 wallet connectivity.
 
+### Demo
+
+#### Explore Page
+
+This will be the home page `/` route, and you will need to take the `token.json` data, or any token data of your choosing, and display the tokens in a list and using the appropriate APIs to fetch the missing data (i.e. price data)
+
+![Explore Page]("/images/explore-page.png")
+
+##### Token Detail Page
+
+This will be the page that loads when a user clicks on a token `/[slug]`.
+
+Here you will render the details of the token like the description, company url and socials, as well as displaying the historical prices of that token in a chart.
+
+The chart will have toggeable filters for the timeframe (1 year, 1 month, 1 week, 1 hour) and it will change the timeframe used to diplay the historical token price data (does not need to be real-time).
+
+Additionally, render out the key statistics of the returns of the day, month, year etc.
+
+![Token Detail Page]("/images/token-detail-page.png")
+
+##### Account Page
+
+This will be the page that loads when a user connects their wallet `/account`. Must only be visible when the wallet is connected, and must be protected if wallet is NOT connected.
+
+DO THIS ONLY FOR 1 CHAIN (of your choice)
+
+- Assets
+
+Here you will render out the asstes the wallet holds, the price of each asset, balance and value, as shown in the picture.
+
+- NFTs
+
+Show also the NFTs the user holds.
+
+- Transaction History (Optional if choosing Solana)
+
+Show the transaction history associated with the account
+
+![Account Page - Tokens]("/images/acount-page.png")
+![Account Page - NFTs]("/images/acount-page-1.png")
+![Account Page - History]("/images/acount-page-2.png")
+
+
 ### Requirements
 
 #### Frontend (Next.js)
