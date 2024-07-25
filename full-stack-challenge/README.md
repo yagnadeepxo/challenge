@@ -41,8 +41,9 @@ There also needs to be a button on the explore page that creates a new token (an
 - **Create Token API:** The useCreateToken hook should call the /api/token/ endpoint to create a new token in the database.
 - **Cache Invalidation:** Ensure cache invalidation is properly implemented when a new token is created.
    - this ensures that the tokens listed update accordingly in real-time whenever you mutate the database data with CRUD operations
+   - done through React Query
 - **Toast Notifications:** Show toast notifications for both success and failure of the token creation.
-
+   - use ShadCN toasts
 
 ![Explore Page](https://github.com/Wysdom-xyz/engineering-challenges/blob/main/full-stack-challenge/public/images/explore-page.png?raw=true)
 
