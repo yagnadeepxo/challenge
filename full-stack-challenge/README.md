@@ -14,9 +14,10 @@ Build a DeFi dashboard using TypeScript, Next.js with the app router, Express, P
 - DB: Prisma, PostgreSQL
 - Blockchain: web3.js / ethers / wagmi (or any equivalent)
 
-### Data
+### Data Sources
 
 - `tokens.json` contains a few example tokens you can use within the challenge. These will be the initial data for your db, and needs to be seeded `npx prisma db seed`
+- RPC URL / token price, token data, NFTs, transaction history etc. (any external APIs of your choice)
 
 ### Demo
 
@@ -244,7 +245,7 @@ Define the Prisma schema for logging API calls:
    - Implement services to fetch data from external APIs (e.g., CoinGecko) and blockchain.
    - Use the router-controller-service pattern, grouped by resource.
 4. **Database:**
-   - Implement a Token model and seed it with the initial data avaiable in `/public/data/tokens.json`
+   - Implement a Token model and seed it with the initial data available in `/public/data/tokens.json`
    - Implement a logger model that records every api call done througout the web app.
 5. **Deployment:**
    - Provide working deployed link (Vercel for frontend, vercel for backend and any free service for db).
