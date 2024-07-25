@@ -9,7 +9,9 @@ Build a DeFi dashboard using TypeScript, Next.js with the app router, Express, P
 #### Tech Stack Used
 
 - Client: Next.js
-- Server: Express.js, REST
+- State Manager: React Query, Zustand, ContextAPI
+- Server: Express.js
+- API Layer: REST
 - UI: Tailwind and ShadCN
 - DB: Prisma, PostgreSQL
 - Blockchain: web3.js / ethers / wagmi (or any equivalent)
@@ -26,18 +28,20 @@ Build a DeFi dashboard using TypeScript, Next.js with the app router, Express, P
 
 This will be the home page `/` route, and you will need to take the `token.json` data, or any token data of your choosing, and display the tokens in a list and using the appropriate APIs to fetch the missing data (i.e. price data)
 
-- *CRUD FUNCTIONALITY:*
+##### => CRUD FUNCTIONALITY
 
 There also needs to be a button on the explore page that creates a new token (anyone can call it)
 
-- Add Token Button: There should be a button to add a new token.
-- Add Token Modal: When the user clicks the "Add Token" button, a modal appears with a form to add a new token.
-- Form Validation: The form should be validated using Zod.
-- Form Implementation: Use react-hook-form for the form implementation.
-- Create Token Hook: Upon form submission, call the useCreateToken hook.
-- Create Token API: The useCreateToken hook should call the /api/token/ endpoint to create a new token in the database.
-- Cache Invalidation: Ensure cache invalidation is properly implemented when a new token is created.
-- Toast Notifications: Show toast notifications for both success and failure of the token creation.
+- **Add Token Button:** There should be a button to add a new token.
+- **Add Token Modal**: When the user clicks the "Add Token" button, a modal appears with a form to add a new token.
+   - use a modal provider with zustand for the state management of your modal
+- **Form Validation:** The form should be validated using Zod.
+- **Form Implementation:** Use react-hook-form for the form implementation.
+- **Create Token Hook:** Upon form submission, call the useCreateToken hook.
+- **Create Token API:** The useCreateToken hook should call the /api/token/ endpoint to create a new token in the database.
+- **Cache Invalidation:** Ensure cache invalidation is properly implemented when a new token is created.
+   - this ensures that the tokens listed update accordingly in real-time whenever you mutate the database data with CRUD operations
+- **Toast Notifications:** Show toast notifications for both success and failure of the token creation.
 
 
 ![Explore Page](https://github.com/Wysdom-xyz/engineering-challenges/blob/main/full-stack-challenge/public/images/explore-page.png?raw=true)
@@ -46,7 +50,7 @@ There also needs to be a button on the explore page that creates a new token (an
 
 ##### Token Detail Page
 
-This will be the page that loads when a user clicks on a token `/[slug]`.
+This will be the page that loads when a user clicks on a token `/[tokenSlug]`.
 
 Here you will render the details of the token like the description, company url and socials, as well as displaying the historical prices of that token in a chart.
 
@@ -180,6 +184,16 @@ export const useItems = () => {
 };
 ```
 
+5. **State Management:**
+
+Use any combination of basic hooks like `useState`, `useReducer`, paired with libraries like `zustand` and `React Context` and `React Query` to achieve proper client-side and server-side state management.
+
+- `useState` => for basic component-level or adjacent component-level state
+- `useReducer` => for more complex component-level or adjacent component-level state
+- `zustand` => for gloabl level state (modals, toast notifications, etc.)
+- `React Context` => for components that are grouped together and need to share the same state (NOT GLOBAL)
+- `React Query` => used for server-side state only (fetching data using `useQuery` and posting data using `useMutation`)
+
 #### Backend (Express)
 1. **API Endpoints:**
 
@@ -252,12 +266,12 @@ Define the Prisma schema for logging API calls:
    - Provide working deployed link (Vercel for frontend, vercel for backend and any free service for db).
 
 ### Evaluation Criteria
-1. **Functionality:** Completeness and correctness of the dashboard and portfolio features.
-2. **Code Quality:** Clean, well-documented, and maintainable code. This also includes:
- - Regular git commits 
-3. **Performance:** Efficient data fetching and rendering.
-4. **User Experience:** Responsive design and smooth interactions.
-5. **Blockchain Integration:** Correct and secure integration with the Web3 wallet and blockchain data.
-6. **Architecture:** Proper use of the router-controller-service pattern, grouped by resource.
+1. **Functionality:** Completeness and correctness of all features.
+2. **Code Quality:** Clean, well-documented, and maintainable code. This also includes making regular git commits 
+3. **Data Fetching:** Efficient data fetching and rendering.
+4. **State Management:** Effective state management.
+5. **User Experience:** Responsive design and smooth interactions.
+6. **Blockchain Integration:** Correct and secure integration with the Web3 wallet and blockchain data.
+7. **Architecture:** Proper use of the router-controller-service pattern, grouped by resource.
 
 This challenge assesses your ability to build a full-stack application with real-time data fetching and blockchain integration. Good luck!
