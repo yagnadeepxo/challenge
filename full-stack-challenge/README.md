@@ -188,10 +188,13 @@ export const useItems = () => {
 
 Use any combination of basic hooks like `useState`, `useReducer`, paired with libraries like `zustand` and `React Context` and `React Query` to achieve proper client-side and server-side state management.
 
+Client-Side State Managaement
 - `useState` => for basic component-level or adjacent component-level state
 - `useReducer` => for more complex component-level or adjacent component-level state
 - `zustand` => for gloabl level state (modals, toast notifications, etc.)
 - `React Context` => for components that are grouped together and need to share the same state (NOT GLOBAL)
+
+Server-Side State Management
 - `React Query` => used for server-side state only (fetching data using `useQuery` and posting data using `useMutation`)
 
 #### Backend (Express)
