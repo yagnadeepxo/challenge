@@ -26,7 +26,7 @@ Build a DeFi dashboard using TypeScript, Next.js with the app router, Express, P
 
 This will be the home page `/` route, and you will need to take the `token.json` data, or any token data of your choosing, and display the tokens in a list and using the appropriate APIs to fetch the missing data (i.e. price data)
 
-**CRUD FUNCTIONALITY:**
+- *CRUD FUNCTIONALITY:*
 
 There also needs to be a button on the explore page that creates a new token (anyone can call it)
 
@@ -147,8 +147,9 @@ Logger Hooks:
     - **useAPILogs**: Hook to fetch and display API logs for monitoring purposes.
 
 4. **Data Fetching:**
-   - Use React Query for data fetching from the backend, using custom hooks. 
-   - Log all API calls to the database within the onSuccess callback for each api call
+   - Use React Query for data fetching from the backend, using custom hooks.
+      - useQuery and useMutation ONLY => DO NOT USE useEffect  
+   - Log all API calls to the database within the onSuccess or onSettled callback for each api call
 
 - Sample custom hook
 ```typescript
