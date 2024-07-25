@@ -1,10 +1,10 @@
-## Wydsdom Full-Stack Challenge - DeFi Dashboard
+## Wysdom Full-Stack Challenge - DeFi Dashboard
 
 ### Objective
 
 Build a DeFi dashboard using TypeScript, Next.js with the app router, Express, Prisma, and React Query, integrating Web3 wallet connectivity.
 
-#### Tech Stack
+#### Tech Stack Used
 
 - Client: Next.js
 - Server: Express.js, REST
@@ -22,7 +22,7 @@ Build a DeFi dashboard using TypeScript, Next.js with the app router, Express, P
 
 This will be the home page `/` route, and you will need to take the `token.json` data, or any token data of your choosing, and display the tokens in a list and using the appropriate APIs to fetch the missing data (i.e. price data)
 
-![Explore Page](https://github.com/Wysdom-xyz/engineering-challenges/blob/main/full-stack-challenge/images/explore-page.png?raw=true)
+![Explore Page](https://github.com/Wysdom-xyz/engineering-challenges/blob/main/full-stack-challenge/public/images/explore-page.png?raw=true)
 
 ##### Token Detail Page
 
@@ -34,7 +34,7 @@ The chart will have toggeable filters for the timeframe (1 year, 1 month, 1 week
 
 Additionally, render out the key statistics of the returns of the day, month, year etc.
 
-![Token Detail Page](https://github.com/Wysdom-xyz/engineering-challenges/blob/main/full-stack-challenge/images/token-detail-page.png?raw=true)
+![Token Detail Page](https://github.com/Wysdom-xyz/engineering-challenges/blob/main/full-stack-challenge/public/images/token-detail-page.png?raw=true)
 
 ##### Account Page
 
@@ -54,9 +54,9 @@ Show also the NFTs the user holds.
 
 Show the transaction history associated with the account
 
-![Account Page - Tokens](https://github.com/Wysdom-xyz/engineering-challenges/blob/main/full-stack-challenge/images/account-page.png?raw=true)
-![Account Page - NFTs](https://github.com/Wysdom-xyz/engineering-challenges/blob/main/full-stack-challenge/images/account-page-1.png?raw=true)
-![Account Page - History](https://github.com/Wysdom-xyz/engineering-challenges/blob/main/full-stack-challenge/images/account-page-2.png?raw=true)
+![Account Page - Tokens](https://github.com/Wysdom-xyz/engineering-challenges/blob/main/full-stack-challenge/public/images/account-page.png?raw=true)
+![Account Page - NFTs](https://github.com/Wysdom-xyz/engineering-challenges/blob/main/full-stack-challenge/public/images/account-page-1.png?raw=true)
+![Account Page - History](https://github.com/Wysdom-xyz/engineering-challenges/blob/main/full-stack-challenge/public/images/account-page-2.png?raw=true)
 
 #### Log List Page
 
