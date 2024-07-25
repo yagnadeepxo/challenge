@@ -193,7 +193,8 @@ Define the Prisma schema for logging API calls:
 
 ### Evaluation Criteria
 1. **Functionality:** Completeness and correctness of the dashboard and portfolio features.
-2. **Code Quality:** Clean, well-documented, and maintainable code.
+2. **Code Quality:** Clean, well-documented, and maintainable code. This also includes:
+ - Regular git commits 
 3. **Performance:** Efficient data fetching and rendering.
 4. **User Experience:** Responsive design and smooth interactions.
 5. **Blockchain Integration:** Correct and secure integration with the Web3 wallet and blockchain data.
