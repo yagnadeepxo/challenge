@@ -161,6 +161,7 @@ export const useItems = () => {
      │   │   │   ├── resource2.router.ts
      │   └── index.ts
      ├── .env
+     └── .eslintrc.js
      ├── tsconfig.json
      └── package.json
      ```
