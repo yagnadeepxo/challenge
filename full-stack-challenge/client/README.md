@@ -5,4 +5,4 @@ RUN `npx create-next-app@latest` with:
 - Tailwind
 - src/
 - App directory
-- No custom alias import 
+- No custom alias import
