@@ -173,10 +173,6 @@ const PriceChart: React.FC = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['bitcoinPrice', timeFrame],
     queryFn: () => fetchChartData(timeFrame),
-    // onSuccess: (data: any) => {
-    //   // Log API call to the database (you'll need to implement this)
-    //   console.log(data);
-    // },
     staleTime: 5 * 60 * 1000, // 5 minutes
   });
 
@@ -251,14 +247,5 @@ const PriceChart: React.FC = () => {
     </div>
   );
 };
-
-// Function to log API calls (implement this to log to your database)
-// const logApiCall = async (endpoint: string, data: any) => {
-//   try {
-//     await axios.post('/api/log', { endpoint, data });
-//   } catch (error) {
-//     console.error('Error logging API call:', error);
-//   }
-// };
 
 export default PriceChart;

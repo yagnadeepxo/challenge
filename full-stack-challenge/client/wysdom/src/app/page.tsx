@@ -2,9 +2,10 @@
 
 import { useRouter } from 'next/navigation';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import WalletConnect from './components/walletConnect';
+import WalletConnec from './components/walletConnect';
 import CryptoCard from './components/cryptoCard';
-import token from '../../../../public/data/tokens.json'
+import TokenFormModal from './components/addTokenModal';
+//import token from '../../../../public/data/tokens.json'
 export default function Home() {
   const router = useRouter();
 
@@ -26,6 +27,14 @@ export default function Home() {
       </div>
       <h2>Explore Cryptocurrencies</h2>
       <div>
+        <br />
+      </div>
+      <div>
+      <QueryClientProvider client={new QueryClient}>
+      <TokenFormModal />
+      </QueryClientProvider>
+    </div>
+      <div>
             <QueryClientProvider client={new QueryClient}>
             {cryptos.map((crypto) => (
           <CryptoCard 
@@ -35,7 +44,6 @@ export default function Home() {
           />
         ))}
             </QueryClientProvider>
-
       </div>
     </div>
   );

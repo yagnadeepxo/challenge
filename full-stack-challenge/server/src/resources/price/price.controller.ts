@@ -1,5 +1,5 @@
 import {Request, Response} from 'express';
-import {PriceService} from './price.service';
+import { PriceService } from './price.service';
 
 export class PriceController {
     private priceService: PriceService;
@@ -17,4 +17,4 @@ export class PriceController {
         res.status(500).json({ error: 'An error occurred while fetching the price' });
       }
     }
-  }
+}
