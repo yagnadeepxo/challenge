@@ -3,6 +3,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useToast } from '@/components/ui/use-toast';
+import useCreateLog from './useCreateLog';
+import { create } from 'domain';
 
 const tokenSchema = z.object({
   name: z.string().min(1, 'Name is required'),
@@ -30,6 +32,7 @@ const createToken = async (data: z.infer<typeof tokenSchema>) => {
 
 export const useCreateToken = () => {
   const queryClient = useQueryClient();
+  const {createLog} = useCreateLog();
   const { toast } = useToast();
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(tokenSchema),
@@ -51,6 +54,16 @@ export const useCreateToken = () => {
         variant: 'destructive',
       });
     },
+    onSettled: (data, error) => {
+      createLog({
+        method: 'POST',
+        endpoint: '/create/',
+        data: {
+          response: data ? { 'data': 'token created' } : null,
+          error: error ? error.message : null
+        }
+      });
+    }
   });
 
   const onSubmit = (data: z.infer<typeof tokenSchema>) => {

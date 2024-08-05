@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import WalletConnec from './components/walletConnect';
+import WalletConnect from './components/walletConnect';
 import CryptoCard from './components/cryptoCard';
 import TokenFormModal from './components/addTokenModal';
 //import token from '../../../../public/data/tokens.json'

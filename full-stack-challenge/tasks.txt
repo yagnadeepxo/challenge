@@ -1,0 +1,6 @@
+1) get transaction history (done) 
+2) get NFT's (done) 
+3) make the logs page 
+4) port the graphs to backend 
+5) make the about page 
+6) make the toasts work well 

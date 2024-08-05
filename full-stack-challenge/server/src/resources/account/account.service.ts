@@ -1,24 +1,4 @@
-// import Moralis from 'moralis';
 
-// export class AccountService {
-//   async getWalletTokenBalances(address) {
-//     return await Moralis.EvmApi.token.getWalletTokenBalances({
-//       address,
-//       chain: "0x1",
-//     });
-//   }
-
-//   async getTokenPrice(address) {
-//     return await Moralis.EvmApi.token.getTokenPrice({
-//       address,
-//       chain: "0x1",
-//     });
-//   }
-// }
-
-// export default module.exports = AccountService;
-
-// service.ts
 import axios from 'axios';
 import { config } from 'dotenv';
 config(); 

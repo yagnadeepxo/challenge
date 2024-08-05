@@ -5,7 +5,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DB_URL")
+  url      = env("DB_CONNECTION")
 }
 
 model Token {
@@ -15,4 +15,12 @@ model Token {
   address   String
   decimals  Int
   ticker    String
+}
+
+model Logger {
+  id        Int      @id @default(autoincrement())
+  method    String
+  endpoint  String
+  data      Json?
+  createdAt DateTime @default(now())
 }
