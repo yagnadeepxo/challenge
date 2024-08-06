@@ -8,7 +8,7 @@ interface TokenBalance {
 }
 
 const fetchTokenBalances = async (address: string): Promise<TokenBalance[]> => {
-  const response = await axios.get(`http://localhost:3001/${address}/token-balances`);
+  const response = await axios.get(`http://localhost:3001/token-balances/${address}`);
   return response.data;
 };
 

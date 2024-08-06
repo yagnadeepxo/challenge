@@ -5,6 +5,6 @@ const accountRouter = router();
 
 const accountController = new AccountController();
 
-accountRouter.get("/:address/token-balances", (req, res) => accountController.getTokenBalances(req, res));
+accountRouter.get("/:address", (req, res) => accountController.getTokenBalances(req, res));
 
 export default accountRouter;
