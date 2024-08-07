@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useToast } from '@/components/ui/use-toast';
 import useCreateLog from './useCreateLog';
-import { create } from 'domain';
+
 
 const tokenSchema = z.object({
   name: z.string().min(1, 'Name is required'),
@@ -45,6 +45,7 @@ export const useCreateToken = () => {
       toast({
         title: 'Success',
         description: 'Token created successfully',
+        
       });
     },
     onError: (error: Error) => {

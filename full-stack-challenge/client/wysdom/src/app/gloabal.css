@@ -1,0 +1,65 @@
+/* global.css */
+.container {
+    max-width: 1200px;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .justify-between {
+    justify-content: space-between;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  .mb-8 {
+    margin-bottom: 2rem;
+  }
+  
+  .gap-4 {
+    gap: 1rem;
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+  .text-2xl {
+    font-size: 1.5rem;
+  }
+  
+  .font-semibold {
+    font-weight: 600;
+  }
+  
+  .mb-4 {
+    margin-bottom: 1rem;
+  }
+  
+  .grid {
+    display: grid;
+  }
+  
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  
+  .gap-6 {
+    gap: 1.5rem;
+  }
+  

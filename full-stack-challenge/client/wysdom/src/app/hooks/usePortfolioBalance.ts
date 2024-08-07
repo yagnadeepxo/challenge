@@ -3,8 +3,10 @@ import useCreateLog from './useCreateLog';
 import axios from 'axios';
 
 interface TokenBalance {
-  tokenAddress: string;
+  token_address: string;
+  symbol: string;
   balance: string;
+  decimals: number;
 }
 
 const fetchTokenBalances = async (address: string): Promise<TokenBalance[]> => {
@@ -23,7 +25,10 @@ export const usePortfolioBalance = (address: string) => {
         endpoint: `/token-balances?address=${address}`,
         data: 'balance fetched successfully',
       })
-      return data;
+      return data.map((token: TokenBalance) => ({
+        ...token,
+        balance: parseFloat(token.balance) / Math.pow(10, token.decimals),
+      }));
     },
     enabled: !!address,
     refetchOnWindowFocus: false,

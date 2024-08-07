@@ -1,6 +1,0 @@
-1) get transaction history (done) 
-2) get NFT's (done) 
-3) make the logs page (done)
-5) make the about page 
-6) make the accounts page (done)
-7) make the toasts work well 

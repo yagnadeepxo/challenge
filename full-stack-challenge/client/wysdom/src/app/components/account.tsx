@@ -32,7 +32,7 @@ export const Account = () => {
       <ul>
         {balance?.map((token, index) => (
           <li key={index}>
-            {token.tokenAddress}: {token.balance}
+            {token.symbol}: {parseFloat(token.balance as unknown as string).toFixed(token.decimals)}
           </li>
         ))}
       </ul>
@@ -52,8 +52,7 @@ export const Account = () => {
           <li key={index}>
             {tx.hash.slice(0, 6)}...{tx.hash.slice(-4)} | 
             From: {tx.from_address_label || tx.from_address.slice(0, 6)} | 
-            To: {tx.to_address_label || tx.to_address.slice(0, 6)} | 
-            Value: {tx.value}
+            To: {tx.to_address_label || tx.to_address.slice(0, 6)}
           </li>
         ))}
       </ul>
