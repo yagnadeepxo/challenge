@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import FetchNftService from './fetchNFT.service';
+import FetchNftService from './fetchNft.service';
 
 export default class FetchNftController {
     static async getNft(req: Request, res: Response) {
