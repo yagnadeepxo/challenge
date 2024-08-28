@@ -23,3 +23,14 @@ model Logger {
   data      Json?
   createdAt DateTime @default(now())
 }
+
+model Pump {
+  id Int @id @default(autoincrement())
+  name String
+  symbol String
+  totalSupply Float @default(1000000) 
+  availableSupply Float @default(1000000)
+  price Float @default(0.01) 
+  marketCap Float @default(0)
+  createdAt DateTime @default(now())
+}

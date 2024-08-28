@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import  Modal  from 'react-modal';
 import { useCreateToken } from '../hooks/useCreateToken';
-//import { Button } from "@/components/ui/button"
+
 const TokenFormModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { register, handleSubmit, onSubmit, errors, isPending, isError } = useCreateToken();
