@@ -8,6 +8,7 @@ import fetchLoggerRouter from './resources/fetchLogs/fetchLogs.router';
 import fetchNftRouter from './resources/fetchNfts/fetchNft.router';
 import fetchHoldingsRouter from './resources/fetchHoldings/fetchHoldings.router';
 import pumpRouter from './resources/pump/pump.router';
+import orderRouter from './resources/order/order.router';
 
 const app = express();
 app.use(cors());
@@ -23,6 +24,8 @@ app.use('/nft', fetchNftRouter);
 app.use('/history', fetchHoldingsRouter);
 app.use('/pump', pumpRouter);
 app.use('/pump', pumpRouter);
+app.use('/pump', pumpRouter);
+app.use('/api/pump', orderRouter);
 
 app.listen(3001,()=>{
     console.log("server up at port 3001")

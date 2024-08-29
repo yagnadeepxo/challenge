@@ -10,5 +10,14 @@ export class PumpService {
 
     async fetchPump(): Promise<Pump[]> {
         return prisma.pump.findMany(); 
-      }
+    }
+
+    async getTokenBySymbol(symbol) {
+        const token = await prisma.pump.findFirst({
+          where: {
+            symbol: symbol,
+          },
+        });
+        return token;
+    }
 }

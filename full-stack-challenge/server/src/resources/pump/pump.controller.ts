@@ -41,4 +41,11 @@ export class PumpController {
       res.status(500).json({ error });
     }
   }
+
+  async getTokenBySymbol(req, res) {
+    const symbol = req.params.symbol;
+    const tokenService = new PumpService();
+    const token = await tokenService.getTokenBySymbol(symbol);
+    res.json(token);
+  }
 }
