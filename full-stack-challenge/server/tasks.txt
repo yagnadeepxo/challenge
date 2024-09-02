@@ -1,8 +1,0 @@
-1) create a token modal /pump                               (done)
-2) push the token to DB                                     (done)
-3) retrieve the token from DB                               (done)
-4) click on the token to open the /token-name               
-5) buy and sell orders 
-6) create the graph
-
-Done
